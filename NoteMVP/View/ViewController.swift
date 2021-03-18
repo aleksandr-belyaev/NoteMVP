@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     var mainView: MainView!
+    var presenter: Presenter!
     
     override func loadView() {
         super.loadView()
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
         let mainView = MainView() { [weak self] in
             self?.present(noteView, animated: true, completion: nil)
         }
+        self.presenter = Presenter(noteList: mainView.notesList, noteView: noteView)
         view.addSubview(mainView)
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),

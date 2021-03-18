@@ -8,5 +8,28 @@
 import Foundation
 
 class Presenter {
+    private var noteListCV: NoteListCV
+    private var noteView: NoteView
+    private var data: [NoteModel]
     
+    init(noteList: NoteListCV, noteView: NoteView) {
+        let data = [NoteModel()]
+        self.noteListCV = noteList
+        self.noteView = noteView
+        self.data = data
+        
+        self.noteView.saveHandler = { [weak self] in
+            self?.saveNote()
+        }
+    }
+    
+    private func saveNote() {
+        print("presenter")
+        var note = NoteModel()
+        if let text = noteView.getText() {
+            note.noteText = text
+            data.append(note)
+            self.noteListCV.updateData(notes: data)
+        }
+    }
 }

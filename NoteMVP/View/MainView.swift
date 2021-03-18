@@ -7,12 +7,12 @@
 
 import UIKit
 
-class MainView: UIStackView, UITableViewDelegate, UITableViewDataSource {
-
+class MainView: UIStackView {
+    
     var addButtonHandler: (() -> Void)?
     
     private var header: UIStackView!
-    private var notesList: UITableView!
+    var notesList: NoteListCV!
     
     init(method: @escaping () -> Void) {
         super.init(frame: .zero)
@@ -36,7 +36,6 @@ class MainView: UIStackView, UITableViewDelegate, UITableViewDataSource {
     
     func createHeader() {
         let header = UIStackView(frame: .zero)
-        header.backgroundColor = .green
         NSLayoutConstraint.activate([
             header.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -56,23 +55,13 @@ class MainView: UIStackView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func createNotesList() {
-        let notesList = UITableView(frame: .zero)
-        notesList.backgroundColor = .blue
-        notesList.delegate = self
-        notesList.dataSource = self
-        
+        let notesList = NoteListCV()
+        notesList.translatesAutoresizingMaskIntoConstraints = false
+        notesList.layoutIfNeeded()
         self.notesList = notesList
     }
     
     @objc func addButtonTapped(_ gesture: UIGestureRecognizer) {
         self.addButtonHandler?()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell(frame: .zero)
     }
 }
