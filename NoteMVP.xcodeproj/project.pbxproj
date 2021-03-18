@@ -13,6 +13,10 @@
 		E7B96A8326033B77003E5547 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B96A8126033B77003E5547 /* Main.storyboard */; };
 		E7B96A8526033B79003E5547 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7B96A8426033B79003E5547 /* Assets.xcassets */; };
 		E7B96A8826033B79003E5547 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B96A8626033B79003E5547 /* LaunchScreen.storyboard */; };
+		E7B96A9326033BF2003E5547 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B96A9226033BF2003E5547 /* MainView.swift */; };
+		E7B96A9626033C48003E5547 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B96A9526033C48003E5547 /* NoteView.swift */; };
+		E7B96A9B2603427F003E5547 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B96A9A2603427F003E5547 /* NoteModel.swift */; };
+		E7B96AA0260342AC003E5547 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B96A9F260342AC003E5547 /* Presenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		E7B96A8426033B79003E5547 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7B96A8726033B79003E5547 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7B96A8926033B79003E5547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7B96A9226033BF2003E5547 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E7B96A9526033C48003E5547 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		E7B96A9A2603427F003E5547 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		E7B96A9F260342AC003E5547 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,51 @@
 		E7B96A7A26033B77003E5547 /* NoteMVP */ = {
 			isa = PBXGroup;
 			children = (
+				E7B96A9D26034284003E5547 /* Model */,
+				E7B96A9826033FDF003E5547 /* View */,
+				E7B96AA2260342B0003E5547 /* Presenter */,
+				E7B96A8926033B79003E5547 /* Info.plist */,
+				E7B96A9026033BA3003E5547 /* stuff */,
+			);
+			path = NoteMVP;
+			sourceTree = "<group>";
+		};
+		E7B96A9026033BA3003E5547 /* stuff */ = {
+			isa = PBXGroup;
+			children = (
 				E7B96A7B26033B77003E5547 /* AppDelegate.swift */,
 				E7B96A7D26033B77003E5547 /* SceneDelegate.swift */,
-				E7B96A7F26033B77003E5547 /* ViewController.swift */,
 				E7B96A8126033B77003E5547 /* Main.storyboard */,
 				E7B96A8426033B79003E5547 /* Assets.xcassets */,
 				E7B96A8626033B79003E5547 /* LaunchScreen.storyboard */,
-				E7B96A8926033B79003E5547 /* Info.plist */,
 			);
-			path = NoteMVP;
+			path = stuff;
+			sourceTree = "<group>";
+		};
+		E7B96A9826033FDF003E5547 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E7B96A7F26033B77003E5547 /* ViewController.swift */,
+				E7B96A9226033BF2003E5547 /* MainView.swift */,
+				E7B96A9526033C48003E5547 /* NoteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E7B96A9D26034284003E5547 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7B96A9A2603427F003E5547 /* NoteModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E7B96AA2260342B0003E5547 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E7B96A9F260342AC003E5547 /* Presenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +182,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7B96A8026033B77003E5547 /* ViewController.swift in Sources */,
+				E7B96AA0260342AC003E5547 /* Presenter.swift in Sources */,
+				E7B96A9B2603427F003E5547 /* NoteModel.swift in Sources */,
+				E7B96A9626033C48003E5547 /* NoteView.swift in Sources */,
+				E7B96A9326033BF2003E5547 /* MainView.swift in Sources */,
 				E7B96A7C26033B77003E5547 /* AppDelegate.swift in Sources */,
 				E7B96A7E26033B77003E5547 /* SceneDelegate.swift in Sources */,
 			);
