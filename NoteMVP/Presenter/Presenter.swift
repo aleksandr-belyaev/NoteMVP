@@ -29,6 +29,7 @@ class Presenter {
         if let text = noteView.getText() {
             note.noteText = text
             data.append(note)
+            noteView.clearText()
             self.noteListCV.updateData(notes: data)
         }
     }

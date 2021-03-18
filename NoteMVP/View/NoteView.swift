@@ -73,4 +73,10 @@ class NoteView: UIViewController {
             return nil
         }
     }
+    
+    func clearText() {
+        if self.textField.text != nil {
+            self.textField.text = ""
+        }
+    }
 }
