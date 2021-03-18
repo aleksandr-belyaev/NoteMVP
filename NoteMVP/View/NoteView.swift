@@ -17,6 +17,12 @@ class NoteView: UIViewController {
         self.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = .white
         
+        createLabel()
+        createTextField()
+        createSaveButton()
+    }
+    
+    func createLabel() {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Enter your note here"
@@ -25,7 +31,10 @@ class NoteView: UIViewController {
             label.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
             label.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
         ])
-        
+        self.label = label
+    }
+    
+    func createTextField() {
         let textField = UITextField(frame: .zero)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Right here"
@@ -35,7 +44,10 @@ class NoteView: UIViewController {
             textField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20),
             textField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
         ])
-        
+        self.textField = textField
+    }
+    
+    func createSaveButton() {
         let saveButton = UIButton(frame: .zero)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.backgroundColor = .blue
@@ -47,14 +59,11 @@ class NoteView: UIViewController {
             saveButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
-        
-        self.label = label
-        self.textField = textField
     }
     
     @objc func saveButtonTapped(_ sender: UIButton) {
         self.saveHandler?()
-        print("noteView")
+        dismiss(animated: true, completion: nil)
     }
     
     func getText() -> String? {

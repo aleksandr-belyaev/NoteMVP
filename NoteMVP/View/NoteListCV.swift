@@ -42,6 +42,10 @@ class NoteListCV: UICollectionView, UICollectionViewDataSource, UICollectionView
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("User tapped on item \(indexPath.row)")
+    }
+    
     func updateData(notes: [NoteModel]) {
         self.notes = notes
         self.reloadData()
