@@ -24,7 +24,6 @@ class Presenter {
     }
     
     private func saveNote() {
-        print("presenter")
         var note = NoteModel()
         if let text = noteView.getText() {
             note.noteText = text

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoteListCell: UICollectionViewCell {
+class NoteListCell: UITableViewCell {
     var cellLabel: UILabel!
 //    var deleteButton: UIButton!
     
