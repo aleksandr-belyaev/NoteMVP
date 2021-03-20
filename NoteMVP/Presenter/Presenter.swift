@@ -24,12 +24,14 @@ class Presenter {
     }
     
     private func saveNote() {
-        var note = NoteModel()
         if let text = noteView.getText() {
-            note.noteText = text
-            data.append(note)
-            noteView.clearText()
-            self.noteListCV.updateData(notes: data)
+            if text != "" {
+                var note = NoteModel()
+                note.noteText = text
+                data.append(note)
+                noteView.clearText()
+                self.noteListCV.updateData(notes: data)
+            }
         }
     }
 }

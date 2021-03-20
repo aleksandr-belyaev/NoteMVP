@@ -8,9 +8,12 @@
 import UIKit
 
 class NoteView: UIViewController {
+    var saveHandler: (() -> Void)?
+    var dismissCompletionHandler: (() -> Void)?
+    
     private var label: UILabel!
     private var textField: UITextField!
-    var saveHandler: (() -> Void)?
+    private var noteIndex: IndexPath?
     
     override func loadView() {
         super.loadView()
@@ -22,7 +25,7 @@ class NoteView: UIViewController {
         createSaveButton()
     }
     
-    func createLabel() {
+    private func createLabel() {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Enter your note here"
@@ -34,7 +37,7 @@ class NoteView: UIViewController {
         self.label = label
     }
     
-    func createTextField() {
+    private func createTextField() {
         let textField = UITextField(frame: .zero)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Right here"
@@ -47,7 +50,7 @@ class NoteView: UIViewController {
         self.textField = textField
     }
     
-    func createSaveButton() {
+    private func createSaveButton() {
         let saveButton = UIButton(frame: .zero)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.backgroundColor = .blue
@@ -61,7 +64,7 @@ class NoteView: UIViewController {
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
     }
     
-    @objc func saveButtonTapped(_ sender: UIButton) {
+    @objc private func saveButtonTapped(_ sender: UIButton) {
         self.saveHandler?()
         dismiss(animated: true, completion: nil)
     }
@@ -77,6 +80,18 @@ class NoteView: UIViewController {
     func clearText() {
         if self.textField.text != nil {
             self.textField.text = ""
+        }
+    }
+    
+    func setNoteIndex(index: IndexPath?) {
+        self.noteIndex = index
+    }
+    
+    func getNoteIndex() -> IndexPath? {
+        if let index = self.noteIndex {
+            return index
+        } else {
+            return nil
         }
     }
 }
