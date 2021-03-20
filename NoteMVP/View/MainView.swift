@@ -55,7 +55,9 @@ class MainView: UIStackView {
     }
     
     func createNotesList() {
-        let notesList = NoteListCV()
+        let notesList = NoteListCV() { [weak self] in
+            self?.addButtonHandler?()
+        }
         notesList.translatesAutoresizingMaskIntoConstraints = false
         notesList.layoutIfNeeded()
         self.notesList = notesList
