@@ -8,8 +8,6 @@
 import UIKit
 
 class NoteListCell: UITableViewCell {
-    var cellLabel: UILabel!
-//    var deleteButton: UIButton!
     
     func createCell(labelText: String) {
         let cellLabel = UILabel(frame: .zero)
@@ -20,8 +18,6 @@ class NoteListCell: UITableViewCell {
             cellLabel.widthAnchor.constraint(equalToConstant: 150),
             cellLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        self.cellLabel = cellLabel
-        self.addSubview(self.cellLabel)
+        self.addSubview(cellLabel)
     }
 }

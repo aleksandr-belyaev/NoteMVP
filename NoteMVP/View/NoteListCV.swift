@@ -13,9 +13,6 @@ class NoteListCV: UITableView, UITableViewDataSource, UITableViewDelegate, NoteL
     var rowTappedHandler: ((_: IndexPath) -> Void)?
     
     init() {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 100, height: 100)
         super.init(frame: .zero, style: .plain)
         
         delegate = self
