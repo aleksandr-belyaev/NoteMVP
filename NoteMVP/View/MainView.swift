@@ -12,7 +12,7 @@ class MainView: UIStackView, MainViewProtocol {
     var addButtonHandler: (() -> Void)?
     
     private var header: UIStackView!
-    var notesList: NoteListCV!
+    var notesList: NoteList!
     
     init() {
         super.init(frame: .zero)
@@ -54,7 +54,7 @@ class MainView: UIStackView, MainViewProtocol {
     }
     
     private func createNotesList() {
-        let notesList = NoteListCV()
+        let notesList = NoteList()
         notesList.translatesAutoresizingMaskIntoConstraints = false
         notesList.layoutIfNeeded()
         self.notesList = notesList

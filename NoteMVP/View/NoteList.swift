@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoteListCV: UITableView, UITableViewDataSource, UITableViewDelegate, NoteListProtocol  {
+class NoteList: UITableView, UITableViewDataSource, UITableViewDelegate, NoteListProtocol  {
     
     private var notes: [NoteModel]?
     var rowTappedHandler: ((_: IndexPath) -> Void)?
