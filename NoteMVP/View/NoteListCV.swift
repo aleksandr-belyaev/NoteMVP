@@ -10,14 +10,13 @@ import UIKit
 class NoteListCV: UITableView, UITableViewDataSource, UITableViewDelegate  {
     
     private var notes: [NoteModel]?
-    private var presentMethodHandler: (() -> Void)?
+    var rowTappedHandler: ((_: IndexPath) -> Void)?
     
-    init(present: @escaping () -> Void) {
+    init() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
         layout.itemSize = CGSize(width: 100, height: 100)
         super.init(frame: .zero, style: .plain)
-        self.presentMethodHandler = present
         
         delegate = self
         dataSource = self
@@ -45,7 +44,7 @@ class NoteListCV: UITableView, UITableViewDataSource, UITableViewDelegate  {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.presentMethodHandler?()
+        self.rowTappedHandler?(indexPath)
     }
     
     func updateData(notes: [NoteModel]) {

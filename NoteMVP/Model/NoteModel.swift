@@ -9,4 +9,5 @@ import Foundation
 
 struct NoteModel {
     var noteText: String = ""
+    var noteIndex: IndexPath?
 }

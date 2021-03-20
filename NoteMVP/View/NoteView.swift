@@ -77,8 +77,12 @@ class NoteView: UIViewController {
         }
     }
     
+    func setText(text: String) {
+        self.textField.text = text
+    }
+    
     func clearText() {
-        if self.textField.text != nil {
+        if let _ = self.textField {
             self.textField.text = ""
         }
     }
@@ -92,6 +96,12 @@ class NoteView: UIViewController {
             return index
         } else {
             return nil
+        }
+    }
+    
+    func clearIndex() {
+        if let _ = self.noteIndex {
+            self.noteIndex = nil
         }
     }
 }

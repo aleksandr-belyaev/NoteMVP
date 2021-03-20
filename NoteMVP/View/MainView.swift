@@ -14,14 +14,13 @@ class MainView: UIStackView {
     private var header: UIStackView!
     var notesList: NoteListCV!
     
-    init(method: @escaping () -> Void) {
+    init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         axis = .vertical
         alignment = .fill
         distribution = .fill
         spacing = 10
-        self.addButtonHandler = method
         
         createHeader()
         createNotesList()
@@ -55,9 +54,7 @@ class MainView: UIStackView {
     }
     
     func createNotesList() {
-        let notesList = NoteListCV() { [weak self] in
-            self?.addButtonHandler?()
-        }
+        let notesList = NoteListCV()
         notesList.translatesAutoresizingMaskIntoConstraints = false
         notesList.layoutIfNeeded()
         self.notesList = notesList
