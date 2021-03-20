@@ -8,14 +8,14 @@
 import Foundation
 
 class Presenter {
-    private var noteListCV: NoteListCV
-    private var noteView: NoteView
-    private var mainView: MainView
+    private var noteListCV: NoteListProtocol
+    private var noteView: NoteViewProtocol
+    private var mainView: MainViewProtocol
     private var data: [NoteModel]
     private var method: (() -> Void)?
     
     init(mainView: MainView, noteView: NoteView, method: @escaping () -> Void) {
-        let data = [NoteModel()]
+        let data = [NoteModel]()
         self.mainView = mainView
         self.noteListCV = mainView.notesList
         self.noteView = noteView
@@ -37,9 +37,10 @@ class Presenter {
         noteView.setNoteIndex(index: index)
         noteView.setText(text: data[index.row].noteText)
         self.method?()
+        
     }
     
-    func presentEmptyNoteView() {
+    private func presentEmptyNoteView() {
         noteView.clearText()
         noteView.clearIndex()
         self.method?()
@@ -48,15 +49,13 @@ class Presenter {
     private func saveNote() {
         if let text = noteView.getText() {
             if text != "" {
-                var note = NoteModel()
-                note.noteText = text
+                var note = NoteModel(noteText: text)
                 if let noteIndex = noteView.getNoteIndex() {
                     note.noteIndex = noteIndex
                     data[noteIndex.row] = note
                 } else {
                     data.append(note)
                 }
-                noteView.clearText()
                 self.noteListCV.updateData(notes: data)
             }
         }

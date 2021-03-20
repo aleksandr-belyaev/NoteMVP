@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoteView: UIViewController {
+class NoteView: UIViewController, NoteViewProtocol {
     var saveHandler: (() -> Void)?
     var dismissCompletionHandler: (() -> Void)?
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainView: UIStackView {
+class MainView: UIStackView, MainViewProtocol {
     
     var addButtonHandler: (() -> Void)?
     
@@ -33,7 +33,7 @@ class MainView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createHeader() {
+    private func createHeader() {
         let header = UIStackView(frame: .zero)
         NSLayoutConstraint.activate([
             header.heightAnchor.constraint(equalToConstant: 50)
@@ -53,7 +53,7 @@ class MainView: UIStackView {
         self.header = header
     }
     
-    func createNotesList() {
+    private func createNotesList() {
         let notesList = NoteListCV()
         notesList.translatesAutoresizingMaskIntoConstraints = false
         notesList.layoutIfNeeded()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoteListCV: UITableView, UITableViewDataSource, UITableViewDelegate  {
+class NoteListCV: UITableView, UITableViewDataSource, UITableViewDelegate, NoteListProtocol  {
     
     private var notes: [NoteModel]?
     var rowTappedHandler: ((_: IndexPath) -> Void)?
@@ -51,5 +51,5 @@ class NoteListCV: UITableView, UITableViewDataSource, UITableViewDelegate  {
         self.notes = notes
         self.reloadData()
     }
-
+    
 }
