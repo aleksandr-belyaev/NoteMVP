@@ -25,8 +25,8 @@ class NoteList: UITableView, UITableViewDataSource, UITableViewDelegate, NoteLis
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if notes != nil {
-            return notes!.count
+        if let notes = self.notes {
+            return notes.count
         } else {
             return 0
         }
@@ -34,7 +34,7 @@ class NoteList: UITableView, UITableViewDataSource, UITableViewDelegate, NoteLis
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteListCell", for: indexPath) as! NoteListCell
-        if let note = notes?[indexPath.row] {
+        if let note = self.notes?[indexPath.row] {
             cell.createCell(labelText: note.noteText)
         }
         return cell
@@ -46,7 +46,7 @@ class NoteList: UITableView, UITableViewDataSource, UITableViewDelegate, NoteLis
     
     func updateData(notes: [NoteModel]) {
         self.notes = notes
-        self.reloadData()
+        reloadData()
     }
     
 }

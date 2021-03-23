@@ -8,7 +8,7 @@
 import Foundation
 
 class Presenter {
-    private var noteListCV: NoteListProtocol
+    private var noteList: NoteListProtocol
     private var noteView: NoteViewProtocol
     private var mainView: MainViewProtocol
     private var data: [NoteModel]
@@ -17,7 +17,7 @@ class Presenter {
     init(mainView: MainView, noteView: NoteView, method: @escaping () -> Void) {
         let data = [NoteModel]()
         self.mainView = mainView
-        self.noteListCV = mainView.notesList
+        self.noteList = mainView.notesList
         self.noteView = noteView
         self.data = data
         self.method = method
@@ -28,7 +28,7 @@ class Presenter {
         self.mainView.addButtonHandler = { [weak self] in
             self?.presentEmptyNoteView()
         }
-        self.noteListCV.rowTappedHandler = { [weak self] index in
+        self.noteList.rowTappedHandler = { [weak self] index in
             self?.showNoteEditor(index: index)
         }
     }
@@ -56,7 +56,7 @@ class Presenter {
                 } else {
                     data.append(note)
                 }
-                self.noteListCV.updateData(notes: data)
+                self.noteList.updateData(notes: data)
             }
         }
     }
