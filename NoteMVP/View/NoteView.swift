@@ -53,7 +53,7 @@ class NoteView: UIViewController, NoteViewProtocol {
     private func createSaveButton() {
         let saveButton = UIButton(frame: .zero)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
-        saveButton.backgroundColor = .blue
+        saveButton.backgroundColor = .systemBlue
         saveButton.setTitle("Save", for: .normal)
         view.addSubview(saveButton)
         NSLayoutConstraint.activate([

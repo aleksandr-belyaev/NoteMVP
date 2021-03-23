@@ -17,7 +17,7 @@ class NoteList: UITableView, UITableViewDataSource, UITableViewDelegate, NoteLis
         
         delegate = self
         dataSource = self
-        register(NoteListCell.self, forCellReuseIdentifier: "NoteListCell")
+        register(UITableViewCell.self, forCellReuseIdentifier: "NoteListCell")
     }
     
     required init?(coder: NSCoder) {
@@ -33,9 +33,9 @@ class NoteList: UITableView, UITableViewDataSource, UITableViewDelegate, NoteLis
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteListCell", for: indexPath) as! NoteListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteListCell", for: indexPath)
         if let note = self.notes?[indexPath.row] {
-            cell.createCell(labelText: note.noteText)
+            cell.textLabel?.text = note.noteText
         }
         return cell
     }
