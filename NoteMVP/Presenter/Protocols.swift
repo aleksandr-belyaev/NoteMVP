@@ -9,6 +9,7 @@ import Foundation
 
 protocol NoteListProtocol {
     var rowTappedHandler: ((_: IndexPath) -> Void)? { get set }
+    var rowDeleteHandler: ((_: IndexPath) -> Void)? { get set }
     func updateData(notes: [NoteModel])
 }
 

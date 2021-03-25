@@ -11,13 +11,14 @@ class NoteList: UITableView, UITableViewDataSource, UITableViewDelegate, NoteLis
     
     private var notes: [NoteModel]?
     var rowTappedHandler: ((_: IndexPath) -> Void)?
+    var rowDeleteHandler: ((_: IndexPath) -> Void)?
     
     init() {
         super.init(frame: .zero, style: .plain)
         
         delegate = self
         dataSource = self
-        register(UITableViewCell.self, forCellReuseIdentifier: "NoteListCell")
+        register(NoteListCell.self, forCellReuseIdentifier: "NoteListCell")
     }
     
     required init?(coder: NSCoder) {
@@ -33,15 +34,25 @@ class NoteList: UITableView, UITableViewDataSource, UITableViewDelegate, NoteLis
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoteListCell", for: indexPath) as! NoteListCell
         if let note = self.notes?[indexPath.row] {
-            cell.textLabel?.text = note.noteText
+            cell.createCell(labelText: note.noteText)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.rowTappedHandler?(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            self.rowDeleteHandler?(indexPath)
+        }
     }
     
     func updateData(notes: [NoteModel]) {

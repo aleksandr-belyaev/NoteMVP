@@ -31,6 +31,9 @@ class Presenter {
         self.noteList.rowTappedHandler = { [weak self] index in
             self?.showNoteEditor(index: index)
         }
+        self.noteList.rowDeleteHandler = { [weak self] index in
+            self?.removeRow(index: index)
+        }
     }
     
     private func showNoteEditor(index: IndexPath) {
@@ -59,5 +62,10 @@ class Presenter {
                 self.noteList.updateData(notes: data)
             }
         }
+    }
+    
+    private func removeRow(index: IndexPath) {
+        data.remove(at: index.row)
+        self.noteList.updateData(notes: data)
     }
 }

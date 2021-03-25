@@ -10,14 +10,6 @@ import UIKit
 class NoteListCell: UITableViewCell {
     
     func createCell(labelText: String) {
-        let cellLabel = UILabel(frame: .zero)
-        cellLabel.translatesAutoresizingMaskIntoConstraints = false
-        cellLabel.text = labelText
-        
-        NSLayoutConstraint.activate([
-            cellLabel.widthAnchor.constraint(equalToConstant: 150),
-            cellLabel.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        self.addSubview(cellLabel)
+        self.textLabel?.text = labelText
     }
 }
